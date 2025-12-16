@@ -35,7 +35,7 @@ export default function RichTextEditor() {
                 }
             })
         ],
-        content: '<p>Hello World! 🌎️</p>',
+        content: '',
         editorProps: {
             attributes: {
                 class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl m-5 focus:outline-none',
@@ -43,6 +43,10 @@ export default function RichTextEditor() {
         },
         // Don't render immediately on the server to avoid SSR issues
         immediatelyRender: false,
+
+        onUpdate: ({ editor }) => {
+            console.log(editor.getHTML())
+        }
     })
 
     return (

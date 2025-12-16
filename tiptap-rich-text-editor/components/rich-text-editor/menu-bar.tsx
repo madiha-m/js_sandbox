@@ -55,7 +55,7 @@ export default function MenuBar({ editor }: { editor: Editor | null }) {
         },
         {
             icon: <Image className="size-4" />,
-            onClick: () => editor.chain().focus().toggleOrderedList().run(),
+            onClick: () => editor.chain().focus().setImage({ src: URL }).run(),
             pressed: editor.isActive("orderedList")
         }
     ]
