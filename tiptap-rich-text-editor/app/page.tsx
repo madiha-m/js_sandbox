@@ -6,7 +6,7 @@ import { useState } from "react";
 export default function Home() {
   const [post, setPost] = useState("")
 
-  const onChange = (content) => {
+  const onChange = (content: string) => {
     setPost(content)
     console.log(content)
   }
