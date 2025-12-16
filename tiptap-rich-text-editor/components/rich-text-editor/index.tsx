@@ -6,7 +6,12 @@ import MenuBar from './menu-bar'
 import TextAlign from '@tiptap/extension-text-align'
 import Image from '@tiptap/extension-image'
 
-export default function RichTextEditor() {
+interface RichTextEditorProps {
+    content: string
+    onChange?: (content: string) => void
+}
+
+export default function RichTextEditor({ content, onChange }: RichTextEditorProps) {
     const editor = useEditor({
         extensions: [
             StarterKit.configure({
@@ -35,7 +40,7 @@ export default function RichTextEditor() {
                 }
             })
         ],
-        content: '',
+        content: content,
         editorProps: {
             attributes: {
                 class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl m-5 focus:outline-none',
@@ -45,7 +50,8 @@ export default function RichTextEditor() {
         immediatelyRender: false,
 
         onUpdate: ({ editor }) => {
-            console.log(editor.getHTML())
+            // console.log(editor.getHTML())
+            onChange?.(editor.getHTML())
         }
     })
 
